@@ -1,0 +1,28 @@
+server:
+  port: 1005
+ 
+spring:
+   cloud:
+    gateway:
+     routes:
+       
+      #Route Mapping 
+       - id: ProfileManagement                    #Route Identifier
+         uri: http://localhost:1002/              #Respective microservice URL which needs to be mapped
+         predicates:                              #Request Context Path Mapping 
+         - Path=/profile/**
+         
+      #Route Mapping 
+       - id: CatalogService                        
+         uri: http://localhost:1003/               
+         predicates: 
+         - Path=/coupon/**                         
+         
+      #Route Mapping 
+       - id: CartPaymentService 
+         uri: http://localhost:1004/
+         predicates: 
+         - Path=/cart/**
+        
+        
+        
